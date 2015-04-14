@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <title>PiensaEnTic</title>
+    <meta name="description" content="Lithium Description" />
+    <%= stylesheet_link_tag "plugins", media: "screen" %>
+    <%= javascript_include_tag "libs/modernizr-2.6.2.min.js" %>
+
+  </head>
+
+<body>
+  
+  <section id="page-container">
+
+
+     <!-- HERO -->
+    <section id="page-hero">
+      <div class="site-inner">
+        <header>
+          <div class="brand-logo">
+            <%= image_tag "sintitulo.png", :style => "height:400px" %></figure>
+          </div>
+        </header>
+        
+      </div>
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="page-about" class="section">
+      <div class="site-inner">
+        <p class="copy-01">
+          Es una convocatoria dirigida a chicos y chicas de 10o  y 11o  grado en colegios de Colombia, con 15 años de edad o más a la fecha de cierre de la convocatoria, para que nos digan en un video de máximo 1 minuto, de una manera creativa y clara, por qué es importante estudiar ingeniería de sistemas.</p>
+        <p class="copy-01">
+          <h1 class="heading h-01">¿Qué puedo hacer en el video?</h1>
+        <p class="copy-01">Lo que quieras. El formato es completamente libre; puede tener un testimonio, entrevistas, video musical, poesía, receta de cocina, coreografía... lo que consideres importante sobre la carrera, las posibilidades de crecimiento, el estado del sector y todas las cosas buenas que se pueden decir sobre por qué estudiar ingeniería de sistemas.</p>
+
+
+        <h1 class="heading h-01">¿Cómo se participa?</h1>
+
+        <div class="columns">
+          <aside>
+            <h3 class="heading h-03">1. CREA</h3>
+            <p class="copy-02">Piensa en la importancia de estudiar ingeniería de sistemas, crea un video y súbelo a YouTube. Si no tienes cuenta, crea una.</p>
+          </aside>
+
+          <aside>
+            <h3 class="heading h-03">2. REGISTRATE</h3>
+            <p class="copy-02">Entra en la página www.piensaentic.com y regístrate ingresando la información de contacto requerida y el enlace a tu video.</p>
+          </aside>
+
+          <aside>
+            <h3 class="heading h-03">3. COMPARTE</h3>
+            <p class="copy-02">Tus amigos podrán votar por tu video directamente en YouTube, tienen hasta las 11:59pm del 30 de Septiembre para votar.</p>
+          </aside>
+          
+        </div>
+        <br>
+        <div class="columns">
+          
+          <aside>
+            <h3 class="heading h-03">4. VOTA</h3>
+            <p class="copy-02">Los 10 videos de chicos y los 10 videos de chicas que tengan más “likes” o “Me gusta” en YouTube seran pre-seleccionados.</p>
+          </aside>
+          <aside>
+            <h3 class="heading h-03">5. SELECCION</h3>
+            <p class="copy-02">Los videos pre-seleccionados seran evaluados por un jurado calificador y escogeran un video de chicos y uno de chicas.</p>
+          </aside>
+          <aside>
+            <h3 class="heading h-03">6. GANA</h3>
+            <p class="copy-02">El video ganador será anunciado en la Feria POP de la Universidad del Norte el viernes 3 de octubre, a las 4:30pm.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- HERO -->
+    <section id="page-work" class="section">
+
+      <div class="my-work-container">
+        <div class="site-inner">
+          <h1 class="heading h-01">VIDEOS</h1>
+        </div>
+
+        <section id="work-grid" class="site-inner">
+          <% @entradas.each do |entrada| %>
+          <% if entrada.link_video.match(/(http:\/\/|https:\/\/|)(www.youtube.com\/watch\?v=|youtu.be\/)/)%>
+          <div class="work-item">
+            <figure class="image-container">
+              <% url="//www.youtube.com/embed/"+ entrada.link_video.sub(/(http:\/\/|https:\/\/|)(www.youtube.com\/watch\?v=|youtu.be\/)/,'')%>
+              <iframe width="300" height="169" src=<%= url%> frameborder="0" allowfullscreen></iframe>
+            </figure>
+            <h2 class="heading h-02"><%= entrada.nombre %></h2>
+            <p class="copy-03"><%= entrada.colegio %></p>
+          </div>
+          <%end%>
+          
+          <% end %>
+          
+           </section>
+
+      </div>
+
+      <div id="work-detail">
+        <span class="close-icon">x</span>
+        <div class="inner site-inner"></div>
+      </div>
+
+    </section>
+     <!-- PHOTOGRAPHY -->
+    <section id="page-photography" class="section">
+      <div class="site-inner">
+        <h1 class="heading h-01">Bloopers</h1>
+
+        <section id="photo-grid">
+          <% @entradas.each do |entrada| %>
+          <% if entrada.link_bloopers.match(/(http:\/\/|https:\/\/|)(www.youtube.com\/watch\?v=|youtu.be\/)/)%>
+          <div class="photo-item">
+            <figure class="image-container">
+              <% url="//www.youtube.com/embed/"+ entrada.link_bloopers.sub(/(http:\/\/|https:\/\/|)(www.youtube.com\/watch\?v=|youtu.be\/)/,'')%>
+              <iframe width="300" height="169" src=<%= url%> frameborder="0" allowfullscreen></iframe>
+            </figure>
+            <h2 class="heading h-02" style="margin: 8px;"><%= entrada.nombre %></h2>
+            <p class="copy-03" style="margin: 5px;"><%= entrada.colegio %></p>
+          </div>
+          <%end%>
+          
+          <% end %>
+          
+        </section>
+      </div>
+    </section>
+
+
+    <!-- SIGNUP -->
+    <section id="page-signup" class="section">
+      <div class="site-inner">
+        
+        <p class="copy-02">Llena el formulario para registrarte.</p>
+
+       <%= render :partial => 'entradas/form' %>
+
+      </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <section id="page-footer">
+
+      
+
+
+    </section>
+
+  </section>
+
+
+
+</body>
+</html>

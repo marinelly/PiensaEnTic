@@ -1,0 +1,39 @@
+<%= form_for(@entrada) do |f| %>
+  <% if @entrada.errors.any? %>
+    <div id="error_explanation">
+      <p class="copy-02"><%= pluralize(@entrada.errors.count, "error") %> prohibited this entrada from being saved:</p>
+
+      <ul>
+      <% @entrada.errors.full_messages.each do |msg| %>
+        <p class="copy-02"><li><%= msg %></li></p>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class ="signup-form">
+
+    <p class="copy-02"><%= f.label :nombre %></p>
+    <%= f.text_field :nombre %>
+
+    <p class="copy-02"><%= f.label :email %></p>
+    <%= f.text_field :email %>
+
+    <p class="copy-02"><%= f.label :colegio %></p>
+    <%= f.text_field :colegio %>
+
+   <p class="copy-02"> <%= f.label :nivel, 'Grado' %></p>
+    <%= f.text_field :nivel %>
+
+    <p class="copy-02"><%= f.label :ciudad %></p>
+    <%= f.text_field :ciudad %>
+
+    <p class="copy-02"><%= f.label :link_video, 'Link del video' %></p>
+    <%= f.text_field :link_video %>
+
+    <p class="copy-02"><%= f.label :link_bloopers, 'Link de los bloopers (opcional)' %></p>
+    <%= f.text_field :link_bloopers %>
+<p class="copy-02"><BR></p>
+    <%= f.submit "Enviar",:class =>"button main rounded" %>
+</div>
+<% end %>
